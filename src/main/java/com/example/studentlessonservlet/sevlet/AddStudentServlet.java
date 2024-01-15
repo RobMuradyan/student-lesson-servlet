@@ -24,11 +24,11 @@ public class AddStudentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("student_name");
-        String surname = req.getParameter("student_surname");
-        String email = req.getParameter("student_email");
-        String age = req.getParameter("student_age");
-        String lessonId = req.getParameter("student_lesson_id");
+        String name = req.getParameter("name");
+        String surname = req.getParameter("surname");
+        String email = req.getParameter("email");
+        String age = req.getParameter("age");
+        String lessonId = req.getParameter("lesson_id");
         studentManager.add(Student.builder()
                 .name(name)
                 .surname(surname)

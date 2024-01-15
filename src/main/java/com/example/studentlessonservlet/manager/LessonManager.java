@@ -17,11 +17,11 @@ public class LessonManager {
             ResultSet resultSet= statement.executeQuery(sql);
             while (resultSet.next()){
                 lessons.add(Lesson.builder()
-                    .id(resultSet.getInt("lesson_id"))
-                    .name(resultSet.getString("lesson_name"))
-                    .duration(resultSet.getTime("lesson_duration"))
-                    .lecturername(resultSet.getString("lesson_lecturername"))
-                    .price(resultSet.getDouble("lesson_price"))
+                    .id(resultSet.getInt("id"))
+                    .name(resultSet.getString("name"))
+                    .duration(resultSet.getTime("duration"))
+                    .lecturername(resultSet.getString("lecturername"))
+                    .price(resultSet.getDouble("price"))
                     .build());
             }
 
@@ -31,18 +31,18 @@ public class LessonManager {
 
     }
     public Lesson getlessonbyid(int id){
-        String sql = "SELECT * FROM lesson WHERE lesson_id = " + id;
+        String sql = "SELECT * FROM lesson WHERE id = " + id;
 
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()){
                 return
                         Lesson.builder()
-                                .id(resultSet.getInt("lesson_id"))
-                                .name(resultSet.getString("lesson_name"))
-                                .duration(resultSet.getTime("lesson_duration"))
-                                .lecturername(resultSet.getString("lesson_lecturername"))
-                                .price(resultSet.getDouble("lesson_price"))
+                                .id(resultSet.getInt("id"))
+                                .name(resultSet.getString("name"))
+                                .duration(resultSet.getTime("duration"))
+                                .lecturername(resultSet.getString("lecturername"))
+                                .price(resultSet.getDouble("price"))
                                 .build();
 
             }
@@ -52,7 +52,7 @@ public class LessonManager {
         }return null;
     }
     public  void add(Lesson lesson){
-        String sql="INSERT INTO lesson(lesson_name,lesson_duration,lesson_lecturername,lesson_price) VALUES(?,?,?,?)";
+        String sql="INSERT INTO lesson(name,duration,lecturername,price) VALUES(?,?,?,?)";
         try(PreparedStatement preparedStatement= connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1,lesson.getName());
             preparedStatement.setTime(2,  lesson.getDuration());
@@ -70,7 +70,7 @@ public class LessonManager {
     }
 
     public void delete(int id) {
-        String sql="DELETE FROM lesson WHERE lesson_id="+id;
+        String sql="DELETE FROM lesson WHERE id="+id;
         try(Statement statement= connection.createStatement()) {
             statement.executeUpdate(sql);
 

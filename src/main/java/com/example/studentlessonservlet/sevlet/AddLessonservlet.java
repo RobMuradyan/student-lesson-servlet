@@ -23,10 +23,10 @@ public class AddLessonservlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("lesson_name");
-        String duration = req.getParameter("lesson_duration");
-        String lecturername = req.getParameter("lesson_lecturername");
-        String price = req.getParameter("lesson_price");
+        String name = req.getParameter("name");
+        String duration = req.getParameter("duration");
+        String lecturername = req.getParameter("lecturername");
+        String price = req.getParameter("price");
         try {
             lessonManager.add(Lesson.builder()
                     .name(name)

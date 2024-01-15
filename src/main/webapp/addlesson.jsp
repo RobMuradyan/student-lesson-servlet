@@ -14,10 +14,10 @@
 
 add lesson <br>
 <form method="post" action="/addLesson">
-    Lesson name:<input type="text" name="lesson_name" placeholder="name">
-    Lesson duration:<input type="time" name="lesson_duration" placeholder="duration">
-    Lesson lecturername:<input type="text" name="lesson_lecturername" placeholder="lecturername">
-    Lesson price:<input type="number" name="lesson_price" placeholder="price">
+    Lesson name:<input type="text" name="name" placeholder="name">
+    Lesson duration:<input type="time" name="duration" placeholder="duration">
+    Lesson lecturername:<input type="text" name="lecturername" placeholder="lecturername">
+    Lesson price:<input type="number" name="price" placeholder="price">
     <input type="submit" name="add">
 
 

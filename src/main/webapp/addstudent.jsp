@@ -15,12 +15,12 @@
 <body>
 add student <br>
 <form method="post" action="/addstudent">
-    Student name:<input type="text" name="student_name" placeholder="name">
-    Student surname:<input type="text" name="student_surname" placeholder="surname">
-    Student email:<input type="text" name="student_email" placeholder="email">
-    Student age:<input type="number" name="student_age" placeholder="age">
+    Student name:<input type="text" name="name" placeholder="name">
+    Student surname:<input type="text" name="surname" placeholder="surname">
+    Student email:<input type="text" name="email" placeholder="email">
+    Student age:<input type="number" name="age" placeholder="age">
 
-    <select name="student_lesson_id">
+    <select name="lesson_id">
         <%
             for (Lesson lesson : lessons) { %>
         <option value="<%=lesson.getId()%>"><%=lesson.getName()%>
