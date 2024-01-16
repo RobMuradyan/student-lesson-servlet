@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebServlet(urlPatterns = "/deleteStudent")
 public class DeleteStudentServlet extends HttpServlet  {
-    StudentManager studentManager=new StudentManager();
+    private StudentManager studentManager=new StudentManager();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id=Integer.parseInt( req.getParameter("id"));

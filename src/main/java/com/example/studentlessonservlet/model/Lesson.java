@@ -13,9 +13,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Lesson {
-    int id;
-    String name;
-    Time duration;
-    String lecturername;
-    double price;
+    private int id;
+    private String name;
+    private Time duration;
+    private String lecturername;
+    private double price;
 }

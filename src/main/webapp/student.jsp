@@ -18,6 +18,7 @@
 <table>
     <tr>
         <th>ID</th>
+        <th>Picture</th>
         <th>Name</th>
         <th>Surname</th>
         <th>email</th>
@@ -25,11 +26,18 @@
         <th>lesson_id</th>
     </tr>
     <%
-        if (!students.isEmpty()){
+        if (students!=null&&!students.isEmpty()){
             for (Student student : students) {
     %>
     <tr>
         <td><%=student.getId()%></td>
+        <td><%if (student.getPicName()!=null){%>
+            <img src="/downloadImage?imageName=<%=student.getPicName()%>">
+            <%}else {%>
+            <span>NO Picture</span>
+            <%}%>
+
+        </td>
         <td> <%=student.getName()%></td>
         <td><%=student.getSurname()%></td>
         <td><%=student.getEmail()%></td>

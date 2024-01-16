@@ -23,6 +23,7 @@ public class StudentManager {
                         .surname(resultSet.getString("surname"))
                         .email(resultSet.getString("email"))
                         .age(resultSet.getInt("age"))
+                        .picName(resultSet.getString("pic_name"))
                         .lesson(lessonManager.getlessonbyid(resultSet.getInt("lesson_id")))
                         .build());
             }
@@ -34,13 +35,14 @@ public class StudentManager {
     }
 
     public void add(Student student) {
-        String query = "INSERT INTO students(name,surname,email,age,lesson_id) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO students(name,surname,email,age,lesson_id,pic_name) VALUES(?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, student.getName());
             preparedStatement.setString(2, student.getSurname());
             preparedStatement.setString(3, student.getEmail());
             preparedStatement.setInt(4, student.getAge());
             preparedStatement.setInt(5, student.getLesson().getId());
+            preparedStatement.setString(6, student.getPicName());
             preparedStatement.executeUpdate();
             ResultSet generatedkeys = preparedStatement.getGeneratedKeys();
             if (generatedkeys.next()) {

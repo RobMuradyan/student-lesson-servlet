@@ -14,7 +14,7 @@
 </head>
 <body>
 add student <br>
-<form method="post" action="/addstudent">
+<form method="post" action="/addstudent" enctype="multipart/form-data">
     Student name:<input type="text" name="name" placeholder="name">
     Student surname:<input type="text" name="surname" placeholder="surname">
     Student email:<input type="text" name="email" placeholder="email">
@@ -27,6 +27,7 @@ add student <br>
         </option>
         <% }%>
     </select> <br>
+    <input type="file" name="picture">
     <input type="submit" name="add">
 
 
