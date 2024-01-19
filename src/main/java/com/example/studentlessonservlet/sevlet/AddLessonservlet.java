@@ -2,6 +2,7 @@ package com.example.studentlessonservlet.sevlet;
 
 import com.example.studentlessonservlet.manager.LessonManager;
 import com.example.studentlessonservlet.model.Lesson;
+import com.example.studentlessonservlet.model.User;
 import com.example.studentlessonservlet.util.TimeUtil;
 
 
@@ -23,6 +24,8 @@ public class AddLessonservlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user= (User) req.getSession().getAttribute("user");
+
         String name = req.getParameter("name");
         String duration = req.getParameter("duration");
         String lecturername = req.getParameter("lecturername");
@@ -33,6 +36,7 @@ public class AddLessonservlet extends HttpServlet {
                     .duration(TimeUtil.stringToTime(duration))
                     .lecturername(lecturername)
                     .price(Double.parseDouble(price))
+                            .user(user)
                     .build());
         } catch (ParseException e) {
             throw new RuntimeException(e);

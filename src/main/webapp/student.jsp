@@ -24,6 +24,7 @@
         <th>email</th>
         <th>age</th>
         <th>lesson_id</th>
+        <th>User added</th>
     </tr>
     <%
         if (students!=null&&!students.isEmpty()){
@@ -43,6 +44,9 @@
         <td><%=student.getEmail()%></td>
         <td><%=student.getAge()%></td>
         <td><%=student.getLesson().getName()%></td>
+        <td><%if (student.getUser()!=null){%>
+            <%=student.getUser().getName()+" "+student.getUser().getSurname()%>
+            <%}%></td>
         <td><a href="/deleteStudent?id=<%= student.getId() %>">delete</a></td>
     </tr>
     <%}}%>

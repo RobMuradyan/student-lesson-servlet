@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManager {
-    Connection connection = DBConnectionProvider.getinstsance().getConnection();
-    LessonManager lessonManager = new LessonManager();
+   private Connection connection = DBConnectionProvider.getinstsance().getConnection();
+   private LessonManager lessonManager = new LessonManager();
+   private UserManager userManager=new UserManager();
 
     public List<Student> getallstudents() {
         String sql = "SELECT * FROM students";
@@ -25,6 +26,7 @@ public class StudentManager {
                         .age(resultSet.getInt("age"))
                         .picName(resultSet.getString("pic_name"))
                         .lesson(lessonManager.getlessonbyid(resultSet.getInt("lesson_id")))
+                                .user(userManager.getUserById(resultSet.getInt("user_id")))
                         .build());
             }
 
@@ -43,6 +45,7 @@ public class StudentManager {
             preparedStatement.setInt(4, student.getAge());
             preparedStatement.setInt(5, student.getLesson().getId());
             preparedStatement.setString(6, student.getPicName());
+            preparedStatement.setInt(7,student.getUser().getId());
             preparedStatement.executeUpdate();
             ResultSet generatedkeys = preparedStatement.getGeneratedKeys();
             if (generatedkeys.next()) {

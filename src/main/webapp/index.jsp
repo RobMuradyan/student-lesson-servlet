@@ -2,11 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>home page</title>
+  <title>Login</title>
 </head>
 <body>
-<a href="/student">students</a>
-<a href="/lesson">lessons</a>
+<%if (session.getAttribute("msg")!=null){%>
+<span style="color: red"><%=session.getAttribute("msg")%></span>
+<% session.removeAttribute("msg");%>
+<%}%>
+<form action="/login" method="post">
+  email:<input type="text" name="email"><br>
+  password:<input type="password" name="password"><br>
+  <input type="submit" name="login">
+</form>
+<br>
+<br>
+<h4><a href="register.jsp">if you not have an account click here</a></h4>
 
 </body>
 </html>

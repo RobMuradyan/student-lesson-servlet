@@ -23,6 +23,7 @@
         <th>Duration</th>
         <th>Lecturername</th>
         <th>price</th>
+        <th>User added</th>
     </tr>
     <%
         if (!lessonList.isEmpty()){
@@ -34,6 +35,9 @@
         <td><%=lesson.getDuration()%></td>
         <td><%=lesson.getLecturername()%></td>
         <td><%=lesson.getPrice()%></td>
+        <td><%if (lesson.getUser()!=null){%>
+        <%=lesson.getUser().getName()+" "+lesson.getUser().getSurname()%>
+        <%}%></td>
         <td><a href="/deleteLesson?id=<%= lesson.getId() %>">delete</a>
     </tr>
     <%}}%>
